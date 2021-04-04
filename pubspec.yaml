@@ -1,4 +1,4 @@
-name: inovola_demo
+name: apps_square_demo
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -24,9 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.1  
-  flutter_swiper: ^1.1.6
-  google_fonts: ^1.1.0
-  intl: ^0.16.1
+  provider: ^4.3.2+2
+  cached_network_image: ^2.3.3
   
 
 

@@ -2,14 +2,12 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:inovola_demo/api/error_response.dart';
-import 'package:inovola_demo/models/reverse_details.dart';
+import 'package:apps_square_demo/api/error_response.dart';
+import 'package:apps_square_demo/models/company_data_model.dart';
 
 import 'api_constant.dart';
 
-enum RequestType {
-  GetReverseDetails,
-}
+enum RequestType { GetCompanyData }
 
 dynamic getRequestBody(String requestBody) {
   return requestBody;
@@ -52,8 +50,6 @@ Future<dynamic> postCallService(String url, RequestType requestType,
           }
         }
         switch (requestType) {
-          case RequestType.GetReverseDetails:
-
           default:
             {}
         }
@@ -102,8 +98,8 @@ String genericHandleErrorResponse(ErrorResponse errorResponse) {
   }
 }
 
-Future<dynamic> getCallService(
-    String url, RequestType requestType, String headerToken) async {
+Future<dynamic> getCallService(String url, RequestType requestType,
+    {String headerToken}) async {
   logD('get url $url');
   try {
     final result = await InternetAddress.lookup('google.com');
@@ -138,9 +134,8 @@ Future<dynamic> getCallService(
           }
         }
         switch (requestType) {
-          case RequestType.GetReverseDetails:
-            return getReverseDetails(response.body);
-            break;
+          case RequestType.GetCompanyData:
+            return getCompanyDetails(response.body);
 
           default:
             {}
